@@ -1,4 +1,9 @@
-output "cluster_managed" {
+output "cluster_imported" {
   description = "Indicates completion of module"
-  value       = "${null_resource.manage-cluster.id}"
+  value       = null_resource.import-cluster.id
+}
+
+output "cluster_removed" {
+  description = "Indicates completion of module"
+  value       = null_resource.remove-cluster.id
 }

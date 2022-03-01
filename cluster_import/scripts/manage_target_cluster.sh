@@ -67,9 +67,18 @@ function installKubectlLocally() {
     ## Install kubectl, if necessary
     if [ ! -x ${WORK_DIR}/bin/kubectl ]; then
         kversion=$(wget -qO- https://storage.googleapis.com/kubernetes-release/release/stable.txt)
-
+        ARCH="amd64"
+        CURRENTARCH=`arch`
+        if [[ "$CURRENTARCH" == "ppc64le" ]]
+        then
+           ARCH="ppc64le"
+        fi
+        if [[ "$CURRENTARCH" == "s390x" ]]
+        then
+           ARCH="s390x"
+        fi        
         echo "Installing kubectl (version ${kversion}) into ${WORK_DIR}..."
-        wget --quiet https://storage.googleapis.com/kubernetes-release/release/${kversion}/bin/linux/amd64/kubectl -P ${WORK_DIR}/bin
+        wget --quiet https://storage.googleapis.com/kubernetes-release/release/${kversion}/bin/linux/${ARCH}/kubectl -P ${WORK_DIR}/bin
         chmod +x ${WORK_DIR}/bin/kubectl
     else
         echo "kubectl has already been installed; No action taken"

@@ -55,5 +55,5 @@ variable "work_directory" {
 
 variable "oc_cli_endpoint" {
   description = "URL to download OC CLI tar file"
-  default = ""
+  default = "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux.tar.gz"
 }

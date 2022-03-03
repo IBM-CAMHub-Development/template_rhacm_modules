@@ -52,3 +52,8 @@ variable "work_directory" {
   description = "Path of the temporary directory where work files will be generated"
   default = ""
 }
+
+variable "oc_cli_endpoint" {
+  description = "URL to download OC CLI tar file"
+  default = ""
+}
